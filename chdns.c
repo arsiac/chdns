@@ -100,7 +100,7 @@ int getAnswer(char *ans){
     char an;
     printf (ans);
     an = getchar();
-    printf(" answer = %c\n",an);
+//    printf(" answer = %c\n",an);
     if (an == '\n'){
         an = 'y';
     }
