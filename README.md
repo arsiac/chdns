@@ -16,7 +16,7 @@
 
 ## 示例
 
-```
+```powershell
 [arsia]$chdns -show
  Now file content(/etc/resolv.conf):
 	#Change by chdns

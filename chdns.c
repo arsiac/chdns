@@ -16,7 +16,7 @@ char *Usage = "\n  chdns: A script to change dns. (NetworkManager) [need sudo]\
                         \n\n\tOptions: \
                         \n\n\t -google (8.8.8.8 & 8.8.4.4)\
                         \n\n\t -114dns (114.114.114.114 & 218.85.157.99)\
-                        \n\n\t -show print dns file content.(/etc/resolv.conf)\n\n\n";
+                        \n\n\t -show print dns file content.(/etc/resolv.conf)\n\n";
 
 /*
 *   dns file path.
@@ -82,7 +82,7 @@ int writeDns(char *dns1, char *dns2){
 void readFile(){
     FILE *resolv = fopen (dnsPath, "r");
     char c = ' ';
-    printf ("\n  Now file content(%s):\n\t", dnsPath);
+    printf ("\n Now file content(%s):\n\t", dnsPath);
     while ((c = fgetc(resolv)) != EOF){
         putchar (c);
         if (c == '\n'){
@@ -97,13 +97,14 @@ void readFile(){
 *   Get answer
 */
 int getAnswer(char *ans){
-    char an[10] = " ";
+    char an;
     printf (ans);
-    fgets(an, 10, stdin);
-    if (0 == strcmp (an, "\n")){
-        strcpy (an, "y");
+    an = getchar();
+    printf(" answer = %c\n",an);
+    if (an == '\n'){
+        an = 'y';
     }
-    if (0 == strcmp(an, "y") || 0 == strcmp(an, "Y") || 0 == strcmp(an, "yes") || 0 == strcmp(an, "YES")){
+    if (an == 'y' || an == 'Y'){
         return 1;
     }else{
         return 0;
