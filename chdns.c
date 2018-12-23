@@ -8,7 +8,7 @@ void readFile();
 int getAnswer(char *ans);
 
 /*
-*   Help information
+*   帮助信息
 */
 char *Usage = "\n  chdns: A script to change dns. (NetworkManager) [need sudo]\
                \n         Change /etc/resolv.conf\
@@ -19,24 +19,24 @@ char *Usage = "\n  chdns: A script to change dns. (NetworkManager) [need sudo]\
                         \n\n\t -s -show print dns file content.(/etc/resolv.conf)\n\n";
 
 /*
-*   dns file path.
+*   系统被修改的dns路径
 */
 char *dnsPath = "/etc/resolv.conf";
 
 /*
-*   '-h', -google' and '-114dns' pattern
+*   选项
 */
 char *help = "-help", *google = "-google", *dns114 = "-114dns", *show = "-show";
 char *h = "-h",       *g = "-g",                                *s = "-s";
 
 /*
-*   dns
+*    google dns 和 114dns
 */
 char *g_dns_1 = "8.8.8.8", *g_dns_2 = "8.8.4.4",
         *dns_114_1 = "114.114.114.114", *dns_114_2 = "114.114.115.115";
 
 /*
-*   When there is only one option
+*   只有一个选项时
 */
 void oneOption(char *option){
     if (0 == strcmp(help, option)|| 0 == strcmp (h, option)){
@@ -65,7 +65,7 @@ void oneOption(char *option){
 }
 
 /*
-*   Write DNS to /etc/resolv.conf
+*   将 DNS 写入 /etc/resolv.conf
 */
 int writeDns(char *dns1, char *dns2){
     char *ns = "nameserver = ";
@@ -84,7 +84,7 @@ int writeDns(char *dns1, char *dns2){
 }
 
 /*
-*   Read file
+*   读取并打印文件
 */
 void readFile(){
     FILE *resolv = fopen (dnsPath, "r");
@@ -101,7 +101,7 @@ void readFile(){
 }
 
 /*
-*   Get answer
+*   判断问题的结果
 */
 int getAnswer(char *ans){
     char an;
@@ -119,19 +119,21 @@ int getAnswer(char *ans){
 }
 
 
-
+/*
+*   主程序
+*/
 
 int main (int argc, char *argv[]){
-    if ( argc > 3){
-        printf ("  chdns: \n\t Too many variables: %d\n",argc);
-    } else {
+
         switch (argc){
             case 1:
                 printf ("\n  chdns: '-h' for help.\n\n");
                 break;
+
             case 2:
                 oneOption(argv[1]);
                 break;
+
             case 3:
                 readFile();
                 if (1 == getAnswer("  chdns: Do you want to change?(y or n):  ")){
@@ -140,7 +142,10 @@ int main (int argc, char *argv[]){
                     printf ("  Refuse to change.\n");
                 }
                 break;
+                
+            default:
+                printf ("  chdns: \n\t Too many variables: %d\n",argc);
+
         }
-    }
     return 0;
 }
