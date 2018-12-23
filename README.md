@@ -13,7 +13,11 @@
 ## 注意
   - 修改的是NetworkManager创建的/etc/resolv.conf
   - 修改需要root权限，或者使用sudo， 不然会报块错误，不能写入
+<<<<<<< HEAD
   - `gcc chdns.c -o chdns` 后，将编译好的文件放入`/usr/bin`等目录，或者为该文件单独配置环境变量
+=======
+  - `gcc chdns.c -o chdns` 后，将编译好的文件放入`/usr/bin`等目录，或者为该文件单独配置
+>>>>>>> 8863743490f485ae203563cec3e46cc7d2074c99
 
 ## 示例
 
