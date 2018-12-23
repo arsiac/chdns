@@ -142,9 +142,9 @@ int main (int argc, char *argv[]){
                     printf ("  Refuse to change.\n");
                 }
                 break;
-                
+
             default:
-                printf ("  chdns: \n\t Too many variables: %d\n",argc);
+                printf ("  chdns: \n\t Too many variables: %d\n",argc-1);
 
         }
     return 0;
