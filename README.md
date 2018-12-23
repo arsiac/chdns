@@ -16,7 +16,11 @@
 
 ## 示例
 
+<<<<<<< HEAD
 ```powershell
+=======
+```shell
+>>>>>>> c9b30f5a2ed840508f9550fb76f28cf1e7882811
 [arsia]$chdns -show
  Now file content(/etc/resolv.conf):
 	#Change by chdns
