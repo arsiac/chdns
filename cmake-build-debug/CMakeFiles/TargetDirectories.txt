@@ -1,0 +1,3 @@
+/media/arsia/_dde_data/code/chdns/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/media/arsia/_dde_data/code/chdns/cmake-build-debug/CMakeFiles/chdns.dir
+/media/arsia/_dde_data/code/chdns/cmake-build-debug/CMakeFiles/edit_cache.dir
