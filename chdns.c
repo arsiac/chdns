@@ -127,7 +127,7 @@ int main (int argc, char *argv[]){
 
         switch (argc){
             case 1:
-                printf ("\n  chdns: '-h' for help.\n\n");
+                printf ("chdns: '-h' for help.\n\n");
                 break;
 
             case 2:

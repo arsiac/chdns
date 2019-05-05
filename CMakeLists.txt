@@ -4,4 +4,4 @@ project(chdns C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(chdns
-        chdns.c)
+        chdns.c file/file.cpp)
