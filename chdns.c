@@ -10,13 +10,13 @@ int getAnswer(char *ans);
 /*
 *   帮助信息
 */
-char *Usage = "\n  chdns: A script to change dns. (NetworkManager) [need sudo]\
-               \n         Change /etc/resolv.conf\
-                        \n\n\t chdns [dns1] [dns2]\
-                        \n\n\tOptions: \
-                        \n\n\t -g -google (8.8.8.8 & 8.8.4.4)\
-                        \n\n\t -114dns (114.114.114.114 & 114.114.115.115)\
-                        \n\n\t -s -show print dns file content.(/etc/resolv.conf)\n\n";
+char *Usage = "Introduce: Scripts for changing DNS(NetworkManager). [need root authority]\
+             \n           The file will be changed: /etc/resolv.conf\
+             \n\nUsage:     chdns [dns1] [dns2]\
+             \n\nCommon options: \
+             \n           -google[g]     (8.8.8.8 & 8.8.4.4)\
+             \n           -114dns        (114.114.114.114 & 114.114.115.115)\
+             \n           -show[s]       print the file.(/etc/resolv.conf)\n\n";
 
 /*
 *   系统被修改的dns路径
@@ -43,24 +43,24 @@ void oneOption(char *option){
         printf ("%s",Usage);
     }else if (0 == strcmp(google, option) || 0 == strcmp (g, option)){
         readFile();
-        if (1 == getAnswer("  chdns: Do you want to change?(y or n):  ")){
+        if (1 == getAnswer("chdns: Do you want to change?(y or n):  ")){
             writeDns(g_dns_1, g_dns_2);
         }else{
-            printf ("  Refuse to change.\n");
+            printf ("Refuse to change.\n");
             return;
         }
     }else if (0 == strcmp(dns114, option)){
         readFile();
-        if (1 == getAnswer("  chdns: Do you want to change?(y or n):  ")){
+        if (1 == getAnswer("chdns: Do you want to change?(y or n):  ")){
             writeDns(dns_114_1, dns_114_2);
         }else{
-            printf ("  Refuse to change.\n");
+            printf ("Refuse to change.\n");
             return;
         }
     }else if (0 == strcmp (show, option) || 0 == strcmp (s, option)){
         readFile();
     }else {
-        printf ("  chdns: There is no such option.('-h' for help)\n\n");
+        printf ("chdns: There is no such option.('-h' for help)\n");
     }
 }
 
@@ -75,10 +75,10 @@ int writeDns(char *dns1, char *dns2){
     fclose (resolv);
 
     if (state < 0){
-        printf ("  chdns: fail to write.\n");
+        printf ("chdns: fail to write.\n");
         return 0;
     }else{
-        printf ("  chdns: Succeccful!\n");
+        printf ("chdns: Succeccful!\n");
         return 1;
     }
 }
@@ -89,15 +89,15 @@ int writeDns(char *dns1, char *dns2){
 void readFile(){
     FILE *resolv = fopen (dnsPath, "r");
     char c = ' ';
-    printf ("\n  chdns: Now file content(%s):\n\t", dnsPath);
+    printf ("chdns: Now file content(%s):\n\t", dnsPath);
     while ((c = fgetc(resolv)) != EOF){
         putchar (c);
         if (c == '\n'){
             printf ("\t");
         }
     }
+    putchar('\n');
     fclose (resolv);
-    printf ("\n\n");
 }
 
 /*
@@ -136,15 +136,15 @@ int main (int argc, char *argv[]){
 
             case 3:
                 readFile();
-                if (1 == getAnswer("  chdns: Do you want to change?(y or n):  ")){
+                if (1 == getAnswer("chdns: Do you want to change?(y or n):  ")){
                     writeDns(argv[1], argv[2]);
                 }else{
-                    printf ("  Refuse to change.\n");
+                    printf ("Refuse to change.\n");
                 }
                 break;
 
             default:
-                printf ("  chdns: \n\t Too many variables: %d\n",argc-1);
+                printf ("chdns: \n\t Too many variables: %d\n",argc-1);
 
         }
     return 0;

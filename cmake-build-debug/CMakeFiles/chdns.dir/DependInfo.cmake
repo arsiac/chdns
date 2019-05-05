@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/media/arsia/_dde_data/code/chdns/chdns.c" "/media/arsia/_dde_data/code/chdns/cmake-build-debug/CMakeFiles/chdns.dir/chdns.c.o"
+  "/home/arsia/code/C/project/chdns/chdns.c" "/home/arsia/code/C/project/chdns/cmake-build-debug/CMakeFiles/chdns.dir/chdns.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
