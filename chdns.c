@@ -43,21 +43,23 @@ void oneOption(char *option){
     if (0 == strcmp(help, option)|| 0 == strcmp (h, option)){
         printf ("%s",Usage);
     }else if (0 == strcmp(google, option) || 0 == strcmp (g, option)){
-//        readFile();
-        if (1 == getAnswer("Do you want to change?(y or n):  ")){
-            writeDns(g_dns_1, g_dns_2);
-        }else{
-            printf ("Refuse to change.\n");
-            return;
-        }
+    	writeDns(g_dns_1, g_dns_2);
+        //readFile();
+        //if (1 == getAnswer("Do you want to change?(y or n):  ")){
+        //    writeDns(g_dns_1, g_dns_2);
+        //}else{
+        //    printf ("Refuse to change.\n");
+        //    return;
+        //}
     }else if (0 == strcmp(dns114, option)){
-//        readFile();
-        if (1 == getAnswer("Do you want to change?(y or n):  ")){
-            writeDns(dns_114_1, dns_114_2);
-        }else{
-            printf ("Refuse to change.\n");
-            return;
-        }
+    	writeDns(dns_114_1, dns_114_2);
+        //readFile();
+        //if (1 == getAnswer("Do you want to change?(y or n):  ")){
+        //    writeDns(dns_114_1, dns_114_2);
+        //}else{
+        //    printf ("Refuse to change.\n");
+        //    return;
+        //}
     }else if (0 == strcmp (show, option) || 0 == strcmp (s, option)){
         readFile();
     }else {
@@ -81,7 +83,7 @@ int writeDns(char *dns1, char *dns2){
             printf ("fail to write.\n");
             return 0;
         }else{
-            printf ("Message( nameserver %s nameserver %s)\nSucceccful!\n", dns1, dns2);
+            printf ("DNS( nameserver %s nameserver %s)\nSucceccful!\n", dns1, dns2);
             return 1;
         }
     } else {
@@ -95,11 +97,11 @@ int writeDns(char *dns1, char *dns2){
 void readFile(){
     FILE *resolv = fopen (dnsPath, "r");
     char c = ' ';
-    printf ("chdns: Now file content(%s):\n\t", dnsPath);
+    printf ("chdns: File Content(%s):\n\t", dnsPath);
     while ((c = fgetc(resolv)) != EOF){
         putchar (c);
         if (c == '\n'){
-            printf ("\t*");
+            printf ("\t");
         }
     }
     putchar('\n');
@@ -141,13 +143,14 @@ int main (int argc, char *argv[]){
                 break;
 
             case 3:
-//                readFile();
-                if (1 == getAnswer("Do you want to change?(y or n):  ")){
-                    writeDns(argv[1], argv[2]);
-                }else{
-                    printf ("Refuse to change.\n");
-                }
-                break;
+            	writeDns(argv[1], argv[2]);
+                //readFile();
+                //if (1 == getAnswer("Do you want to change?(y or n):  ")){
+                //    writeDns(argv[1], argv[2]);
+                //}else{
+                //    printf ("Refuse to change.\n");
+                //}
+               break;
 
             default:
                 printf ("Too many variables: %d\n",argc-1);
